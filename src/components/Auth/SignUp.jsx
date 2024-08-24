@@ -34,7 +34,7 @@ function SignUp() {
             {/* Form Heading */}
             <div className="text-center">
               <h1 className="text-3xl font-bold">Sign Up to Get Started</h1>
-              <p className="text-gray-400 my-2">Enter your email address to proceed.</p>
+              <p className="text-gray-400 my-2 font-bold">Enter your email address to proceed.</p>
             </div>
             {/* Email Input */}
             <Input 
@@ -45,7 +45,7 @@ function SignUp() {
               color="blue" 
             />
             {/* Submit Button */}
-            <button type="submit" className="bg-blue-500 w-[100%] text-white p-2 rounded-md">
+            <button type="submit" className="bg-blue-500 w-[100%] text-white p-2 rounded-md hover:bg-blue-600 transition-all duration-200">
               Proceed
             </button>
             {/* Sign In Link */}
@@ -59,10 +59,10 @@ function SignUp() {
         <div className="rightContainer w-1/2 bg-customBlack flex justify-center text-center items-center">
           <div className="flex flex-col text-white text-2xl font-bold p-4 w-full items-center">
             {/* Typewriter Effect */}
-            <h1>New Age Documents</h1>
+            <h1 className=''>New Age Documents</h1>
             <Typewriter
               options={{
-                strings: [`that Will Change the Way You Work`, 'for Powerful External & Internal Wikis|', 'Welcome!'],
+                strings: [`that Will Change the Way You Work`, 'for Powerful External & Internal Wikis|', 'that Will Change the Way You Work|'],
                 autoStart: true,
                 loop: true,
               }}
