@@ -5,6 +5,7 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Landing from './components/LandingPage/Landing'
 import Auth from './components/Auth/Auth'
+import SignUp from './components/Auth/SignUp'
 
 
 
@@ -16,6 +17,7 @@ function App() {
     <Routes>
       <Route path='/' Component={Landing}/>
       <Route path='/auth' Component={Auth}/>
+      <Route path='/auth/signup' Component={SignUp}/>
     </Routes>
     </BrowserRouter>
   )
