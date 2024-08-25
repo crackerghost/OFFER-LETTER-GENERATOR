@@ -7,7 +7,7 @@ import EmailVerify from './EmailVerify';
 
 function SignUp() {
     
-    const [page,setPage] = useState('v')
+    const [page,setPage] = useState('')
 
     const changePage = (page)=>{
               setPage(page)

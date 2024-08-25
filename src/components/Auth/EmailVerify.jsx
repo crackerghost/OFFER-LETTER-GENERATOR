@@ -1,21 +1,49 @@
 import React, { useState } from 'react';
 import OtpInput from 'react-otp-input';
 import Navbar from './Navbar/Navbar';
-
+import axios from 'axios';
+import url from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
 function EmailVerify() {
   const [otp, setOtp] = useState("");
-
+  const [attempts ,setAttempt] = useState(3)
+  const nav = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault(); 
     if(otp.length>3){
-        alert('success')
-        console.log(otp)
+       verifyOtp()
     }else{
         alert('invalid')
     }
    
   };
 
+  const verifyOtp = async () => {
+    try {
+      const response = await axios.post(`${url.url}/verifyOtp`, {
+        code: otp
+      });
+  
+      if (response.status === 200) {
+          nav('/dashboard')
+      } 
+    } catch (error) {
+      if(error.status === 400){
+        // setAttempt(error.response.data)
+        setAttempt(error.response.data.attempts)
+        alert('Incorrect Otp');
+
+      }
+      if(error.status === 500){
+        setAttempt(0)
+        
+        alert('No Attempts Left');
+        nav('/')
+      }
+   
+    }
+  };
+  
   return (
     <div className="leftContainer w-1/2 flex flex-col items-center">
       <Navbar />
@@ -49,6 +77,7 @@ function EmailVerify() {
         <button type="submit" className="bg-blue-500 w-full text-white p-2 rounded-md hover:bg-blue-600 transition-all duration-200">
           Verify
         </button> 
+        <p>{attempts} Attempts Left</p>
       </form>
     </div>
   );

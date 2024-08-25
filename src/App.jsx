@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Landing from './components/LandingPage/Landing'
 import Auth from './components/Auth/Auth'
 import SignUp from './components/Auth/SignUp'
+import Dash from './components/Dashboard/Dash'
 
 
 
@@ -18,6 +19,7 @@ function App() {
       <Route path='/' Component={Landing}/>
       <Route path='/auth' Component={Auth}/>
       <Route path='/auth/signup' Component={SignUp}/>
+      <Route path='/dashboard' Component={Dash}/>
     </Routes>
     </BrowserRouter>
   )

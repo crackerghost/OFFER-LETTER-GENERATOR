@@ -1,15 +1,38 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar/Navbar';
 import { Input } from "@material-tailwind/react";
+import axios from 'axios';
+import url from '../../utils/api';
 
 function LeftSignUp({page}) {
+ 
      const [email,setEmail] = useState('')
 
     const handleSubmit = (e)=>{
         e.preventDefault()
         localStorage.setItem('email',email)
-        page('verify')
+        sendEmail()
+       
     }
+    const sendEmail = async () => {
+      try {
+        const response = await axios.post(`${url.url}/sendEmailOtp`, {
+          email: email
+        });
+    
+        if (response.status === 200) {
+          console.log('OTP sent successfully');
+      
+          page('verify'); 
+        } else {
+          console.log('Failed to send OTP');
+       
+        }
+      } catch (error) {
+        console.error('Error sending OTP:', error);
+    
+      }
+    };
   return (
     <div className="leftContainer w-1/2 flex flex-col items-center">
     <Navbar />
@@ -26,10 +49,11 @@ function LeftSignUp({page}) {
         label="Email Address" 
         placeholder="Email Address" 
         color="blue" 
+        type='email'
         value={email}
         required
         onChange={((e)=>{
-setEmail(e.target.value)
+         setEmail(e.target.value)
         })}
       />
       {/* Submit Button */}
