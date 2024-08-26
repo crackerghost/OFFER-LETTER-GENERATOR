@@ -24,16 +24,22 @@ function EmailVerify() {
         code: otp
       });
   
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
+        localStorage.setItem('token',response.data.token)
           nav('/dashboard')
       } 
+
+
+      console.log(response)
     } catch (error) {
+      console.log(error)
       if(error.status === 400){
         // setAttempt(error.response.data)
         setAttempt(error.response.data.attempts)
         alert('Incorrect Otp');
 
       }
+      
       if(error.status === 500){
         setAttempt(0)
         

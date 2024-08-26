@@ -17,9 +17,10 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path='/' Component={Landing}/>
-      <Route path='/auth' Component={Auth}/>
-      <Route path='/auth/signup' Component={SignUp}/>
+ 
+      <Route path='/auth/proceed' Component={SignUp}/>
       <Route path='/dashboard' Component={Dash}/>
+      <Route path='*' Component={Landing}/>
     </Routes>
     </BrowserRouter>
   )

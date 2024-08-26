@@ -10,7 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coreui/coreui": "^5.1.2",
+    "@coreui/react": "^5.3.0",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@material-tailwind/react": "^2.1.9",
+    "@mui/lab": "^5.0.0-alpha.173",
+    "@mui/material": "^5.16.7",
     "axios": "^1.7.5",
     "gsap": "^3.12.5",
     "otp-input-react": "^0.3.0",
